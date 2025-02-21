@@ -53,8 +53,38 @@
         <tr>
             <td></td>
             <td>
-                <button type="submit" [disabled]="form.invalid">Add</button> <!-- If form is invalid, disable the submit button -->
+                <button type="submit" [disabled]="invalid()">Add</button> <!-- If form is invalid, disable the submit button -->
+            </td>
+            <td>
+                <button type="button" (click)="addCollaborator()">Add Collaborators</button> <!-- If form is invalid, disable the submit button -->
             </td>
         </tr>
+    </table>
+
+
+    <h2>Collaborators</h2>
+
+    <table>
+        @if (collaborators.controls.length > 0 ) {
+            <thead>
+                <th>Index</th>
+                <th>Name</th>
+                <th>Email</th>
+            </thead>
+            <tbody formArrayName="collaborators">
+                @for (col of collaborators.controls; let i = $index; track col) { <!-- Looping through the controls -->
+                    <!-- Angular names each component by its index -->
+                    <!-- col is AbstractControl, if use [formGroup]='col', need to relax type checking. Not recommended-->
+                    <tr [formGroupName]='i'>
+                        <td>{{i + 1}}</td>
+                        <td><input type="text" formControlName="name"></td>
+                        <td><input type="email" formControlName="email"></td>
+                        <td><button type="button" (click)="removeCollaborator(i)">X</button></td>
+                    </tr>
+    
+                }
+            </tbody>
+
+        }
     </table>
 </form>
