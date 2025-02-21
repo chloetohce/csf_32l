@@ -1,0 +1,22 @@
+td {
+    vertical-align: center;
+}
+
+.validation {
+    padding-top: 2px;
+}
+
+.valid {
+    border: 2px rgb(183, 254, 183) solid;
+    padding: 1px;
+    border-radius: 7px;
+}
+.invalid {
+    border: 2px rgb(255, 60, 21) solid;
+    padding: 1px;
+    border-radius: 7px;
+}
+
+p {
+    line-height: 1em;
+}

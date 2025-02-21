@@ -1,0 +1,60 @@
+<form [formGroup]="form" (submit)="processForm()">
+
+    <div class="validation">
+        <p>Form valid: {{form.valid}}</p>
+        <p>Form invalid: {{form.invalid}}</p>
+
+        <!-- Can ask if individual fields are invalid -->
+         <p>taskName valid: {{form.get('taskName')?.valid}}</p>
+         <p>taskName invalid: {{form.get('taskName')?.invalid}}</p>
+    </div>
+
+    <table>
+        <tr>
+            <td>Task Name</td>
+            <td>
+                <input type="text" formControlName="taskName" [ngClass]="{'valid': form.get('taskName')?.valid, 'invalid':form.get('taskName')?.invalid}">
+            </td>
+        </tr>
+        <tr>
+            <td>Priority</td>
+            <td>
+                <select formControlName="priority">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Due Date</td>
+            <td>
+                <input type="date" formControlName="date" [ngClass]="isCtrlValid('date') ? 'valid' : 'invalid'">
+            </td>
+        </tr>
+        <tr>
+            <td>Urgency</td>
+            <td>
+                <input type="range" formControlName="urgency" min="1" max="5" (change)="updateUrgency($event)"> {{urgency}}
+            </td>
+        </tr>
+        <tr>
+            <td>Comments</td>
+            <td>
+                <textarea formControlName="comments" name="" id="" cols="30" rows="4"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>Procrastinate</td>
+            <td>
+                <input type="checkbox" formControlName="procrastinate">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit" [disabled]="form.invalid">Add</button> <!-- If form is invalid, disable the submit button -->
+            </td>
+        </tr>
+    </table>
+</form>

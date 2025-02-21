@@ -1,59 +1,22 @@
-# Csf32l
+# CSF_32L
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.7.
+# Notes
 
-## Development server
+## Different ways to do ngClass
+1. `[ngClass]="{'valid': form.get('taskName')?.valid, 'invalid':form.get('taskName')?.invalid}"`
+2. `[ngClass]="isCtrlValid('date') ? 'valid' : 'invalid'"` 
+    - Only works for one class?
+3. Use variables: `[ngClass]="{'red': !lesson.isComplete, 'black': lesson.isComplete }"`
 
-To start a local development server, run:
+## Truthy or falsey
+If a string is empty or null, it will be treated as false. Essentially how Python treats objects/classes as T/F.
 
-```bash
-ng serve
-```
+With reference to the TaskComponent `isCtrlValid()` method, the `.get()` method returns either an `any` type or `null`. And `.valid` returns boolean or undefined. 
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+By placing `!!` in front, it converts the values into a boolean, that can be returned and used. 
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+# Questions
+- [ ] FormControl
+- [ ] FormGroup
+- [ ] Validators in typescript
+- [ ] Is there an easier way to do classes for valid/invalid fields? Can we do an if-else, rather than manually check each property (whether valid or invalid)? 
