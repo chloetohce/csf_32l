@@ -16,7 +16,7 @@ With reference to the TaskComponent `isCtrlValid()` method, the `.get()` method 
 By placing `!!` in front, it converts the values into a boolean, that can be returned and used. 
 
 # Questions
-- [ ] FormControl
+- [X] FormControl
 - [ ] FormGroup
 - [ ] Validators in typescript
 - [ ] Is there an easier way to do classes for valid/invalid fields? Can we do an if-else, rather than manually check each property (whether valid or invalid)? 
